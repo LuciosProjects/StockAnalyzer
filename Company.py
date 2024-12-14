@@ -59,7 +59,7 @@ class Company:
 
         self._active             = self.starting_day == np.int64(0)
 
-        self.startingDay        = self.starting_day
+        # self.startingDay        = self.starting_day
 
 
     def load_from_csv(self, symbol) -> pd.Timestamp:
@@ -210,6 +210,8 @@ class Company:
                                         "days since start date": days_since_start_date
                                         }])
     
+        self.starting_day = days_since_start_date
+
         derived_data.to_csv('Database/' + symbol + '.csv',index=False)
         historical_data_df = pd.DataFrame(index=historical_data.index, columns=['Close', 'Adj Close'])
         historical_data_df['Close']     = historical_data['Close']
@@ -232,8 +234,8 @@ class Company:
         numTotalDays = Data.Manager.numTotalDays
 
         self.History = {"price":                    np.nan*np.ones(numTotalDays,dtype='float32'),
-                        "trading_volume":           np.zeros(numTotalDays,dtype='int32'),
-                        "shares_outstanding":       np.zeros(numTotalDays,dtype='int32'),
+                        "trading_volume":           np.zeros(numTotalDays,dtype='int64'),
+                        "shares_outstanding":       np.zeros(numTotalDays,dtype='int64'),
                         "market_cap":               np.nan*np.ones(numTotalDays,dtype='float32'),
                         "revenue":                  np.nan*np.ones(numTotalDays,dtype='float32'),
                         "earnings":                 np.nan*np.ones(numTotalDays,dtype='float32'),

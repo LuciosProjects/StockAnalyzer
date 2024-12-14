@@ -1,0 +1,2 @@
+This folder contains .csv files of stock market tickers (pairs of general data for simulation & historical data for a given date).
+the Company class will automatically use the yfinance API to fetch data for the given ticker & a date when necessary

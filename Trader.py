@@ -187,14 +187,24 @@ class Trader:
             self.balance += np.max([np.random.normal(self.income, self.income_sigma) ,0.0])
 
     def trading_day(self, Data, mode='Reg'):
-
+        
         dt = 1
-        if(self._canTrade(dt) or mode == 'Init'):
-            for ticker in Data.Market.tickers:
-                pass
-
+        if(mode == 'Init'):
+            self._trading_day_init(Data)
+        elif(self._canTrade(dt)):
+            self._trading_day(Data)
         pass
 
+    def _trading_day_init(self, Data):
+
+        for ticker in Data.Market.tickers:
+                pass
+        
+    def _trading_day(self, Data):
+
+        for ticker in Data.Market.tickers:
+                pass
+        
 # class C_trader_portfolio:
 #     def __init__(self, trader: Trader, Data):
         
